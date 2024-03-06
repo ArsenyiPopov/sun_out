@@ -1,20 +1,20 @@
 <template>
-    <div>
+    <div class="video-bg">
+      <video class="elementor-video"  src="https://sdo.gsfc.nasa.gov/assets/img/latest/mpeg/latest_1024_0171.mp4" typeof="video/mp4" autoplay muted loop playsinline controlslist="nodownload"></video>
+      <div class="block_time">
       <h1>Когда погаснет Солнце ?</h1>
-      <div>
         <p>осталось ≈ {{ formattedTime }}</p>
       </div>
-      <TheCountSun/>
     </div>
   </template>
   
   <script>
-  import TheCountSun from "@/components/TheCountSun.vue"; // Замените путь на фактический путь к вашему компоненту
+  
 
   export default {
     name: 'MainPage',
     components: {
-    TheCountSun,
+    
   },
   
     data() {
@@ -58,6 +58,39 @@
   </script>
   
   <style>
-  /* Ваши стили могут быть добавлены здесь */
+  .video-bg {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .video-bg video {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .block_time {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 50px;
+    align-content: flex-end;
+  }
+  @media screen and (max-width: 768px) {
+    .bg {
+      display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+  }
+}
+
   </style>
   
