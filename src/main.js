@@ -1,4 +1,3 @@
-//main.js
 import { createApp } from 'vue';
 import { createHead } from '@unhead/vue';
 import VueYandexMetrika from 'vue-v3-yandex-metrika';
