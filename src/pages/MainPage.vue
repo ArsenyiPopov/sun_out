@@ -5,7 +5,7 @@ useHead({
   description: 'Собираем интересные данные о солнце',
   meta: [
     { name: 'yandex-verification', content: 'a89e2621b00f15a0' },
-    // Другие мета-теги, которые вы хотите добавить
+    
   ],
 })
 </script>

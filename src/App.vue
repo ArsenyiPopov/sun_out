@@ -1,3 +1,14 @@
+<script setup>
+import { useHead } from '@unhead/vue'
+useHead({
+  title: 'Все о солнце',
+  description: 'Собираем интересные и полезные данные о солнце',
+  meta: [
+    { name: 'yandex-verification', content: 'a89e2621b00f15a0' },
+    
+  ],
+})
+</script>
 <template>
   <div>
     <router-view></router-view>
