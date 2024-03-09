@@ -14,6 +14,10 @@ app.use(router);
 
 app.use(VueYandexMetrika, {
     id: 96694010,
+    clickmap:true,
+    trackLinks:true,
+    accurateTrackBounce:true,
+    webvisor:true,
     env: process.env.NODE_ENV
     
 }); 
