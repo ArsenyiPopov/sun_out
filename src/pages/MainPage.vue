@@ -84,9 +84,6 @@ useHead({
   .video-bg video {
     height: 100vh;
     width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     object-fit: cover;
     z-index: -1;
   }
@@ -98,11 +95,17 @@ useHead({
     padding: 50px;
     align-content: flex-end;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 766px) {
     .bg {
       display: flex;
     flex-wrap: wrap;
     align-content: flex-end;
+  }
+.block_time {
+    padding: 24px;
+}
+.video-bg {
+  flex-direction: column;
   }
 }
 @media screen and (min-width: 1024px) {
