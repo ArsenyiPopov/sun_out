@@ -1,3 +1,15 @@
+<script setup>
+import { useHead } from '@unhead/vue'
+useHead({
+  title: 'Когда погаснет Солнце ?',
+  description: 'Собираем интересные данные о солнце',
+  meta: [
+    { name: 'yandex-verification', content: 'a89e2621b00f15a0' },
+    // Другие мета-теги, которые вы хотите добавить
+  ],
+})
+</script>
+
 <template>
     <div class="video-bg">
       <video class="elementor-video"  src="https://sdo.gsfc.nasa.gov/assets/img/latest/mpeg/latest_1024_0171.mp4" typeof="video/mp4" autoplay muted loop playsinline controlslist="nodownload"></video>
@@ -66,6 +78,8 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    background-color: #000000;
+    z-index: -3;
   }
   .video-bg video {
     height: 100vh;
@@ -90,6 +104,20 @@
     flex-wrap: wrap;
     align-content: flex-end;
   }
+}
+@media screen and (min-width: 1024px) {
+  
+  .video-bg {
+    background-color: #000000;
+    z-index: -3;
+    align-items: flex-start;
+  }
+
+  .video-bg video {
+    position: unset;
+    object-fit: contain;
+  }
+ 
 }
 
   </style>
