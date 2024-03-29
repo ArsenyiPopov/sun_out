@@ -1,5 +1,6 @@
 <script setup>
 import { useHead } from '@unhead/vue'
+import { useRouter } from 'vue-router';
 useHead({
   title: 'Когда погаснет Солнце ?',
   description: 'Собираем интересные данные о солнце',
@@ -8,9 +9,38 @@ useHead({
     
   ],
 })
+const router = useRouter();
+
+let startX = null;
+let endX = null;
+
+const handleTouchStart = (event) => {
+  startX = event.touches[0].clientX;
+};
+
+const handleTouchMove = (event) => {
+  if (!startX) return;
+  endX = event.touches[0].clientX;
+};
+
+const handleTouchEnd = () => {
+  if (startX && endX) {
+    const deltaX = endX - startX;
+    if (deltaX > 50) {
+      // Свайп вправо - переключаемся на предыдущую страницу
+      router.go(-1);
+    } else if (deltaX < -50) {
+      // Свайп влево - переключаемся на следующую страницу
+      router.go(1);
+    }
+  }
+  startX = null;
+  endX = null;
+};
 </script>
 
 <template>
+  <div class="page" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd">
     <div class="video-bg">
       <video class="elementor-video"  src="https://sdo.gsfc.nasa.gov/assets/img/latest/mpeg/latest_1024_0171.mp4" typeof="video/mp4" autoplay muted loop playsinline controlslist="nodownload"></video>
       <div class="block_time">
@@ -18,6 +48,7 @@ useHead({
         <p>осталось ≈ {{ formattedTime }}</p>
       </div>
     </div>
+  </div>
   </template>
   
   <script>

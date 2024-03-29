@@ -1,29 +1,40 @@
-<script setup>
-import { useHead } from '@unhead/vue'
-useHead({
-  title: 'Все о солнце',
-  description: 'Собираем интересные и полезные данные о солнце',
-  meta: [
-    { name: 'yandex-verification', content: 'a89e2621b00f15a0' },
-    
-  ],
-})
-</script>
 <template>
-  <div>
+  <div id="app" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd">
     <router-view></router-view>
   </div>
 </template>
 
-<script>
+<script setup>
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 
-export default {
-  name: 'App',
-  components: {
-   
+let startX = null;
+let endX = null;
+
+const handleTouchStart = (event) => {
+  startX = event.touches[0].clientX;
+};
+
+const handleTouchMove = (event) => {
+  if (!startX) return;
+  endX = event.touches[0].clientX;
+};
+
+const handleTouchEnd = () => {
+  if (startX && endX) {
+    const deltaX = endX - startX;
+    if (deltaX > 50) {
+      // Свайп вправо - переключаемся на предыдущую страницу
+      router.go(-1);
+    } else if (deltaX < -50) {
+      // Свайп влево - переключаемся на следующую страницу
+      router.go(1);
+    }
   }
-}
+  startX = null;
+  endX = null;
+};
 </script>
 
 <style>
@@ -34,12 +45,7 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-h1 {
-  margin: 0;
-  padding: 0;
-  color: white;
-}
-p {
+h1, p {
   color: white;
 }
 </style>
