@@ -4,8 +4,9 @@
       <div class="block_time">
         <h1>Пятна на солнце</h1>
         <p v-if="data">{{ data.location.name }}</p>
-        <p v-if="data">Время {{ data.location.localtime }}</p>
-        <p v-if="data">Уровень геомагнитных возмущений: {{ data.astronomy.astro.moon_phase }}</p>
+        <p v-if="data"> {{ data.location.localtime }}</p>
+        <p v-if="data">Восход солнца: {{ data.astronomy.astro.sunrise }}</p>
+        <p v-if="data">Заход солнца: {{ data.astronomy.astro.sunset }}</p>
         <p v-else>Loading...</p>
       </div>
     </div>
