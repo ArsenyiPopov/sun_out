@@ -28,10 +28,10 @@ const handleTouchEnd = () => {
     const deltaX = endX - startX;
     if (deltaX > 50) {
       // Свайп вправо - переключаемся на предыдущую страницу
-      router.go(-1);
+      router.go(1);
     } else if (deltaX < -50) {
       // Свайп влево - переключаемся на следующую страницу
-      router.go(1);
+      router.go(-1);
     }
   }
   startX = null;
